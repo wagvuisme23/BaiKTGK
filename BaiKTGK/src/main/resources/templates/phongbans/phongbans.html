@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <title th:inline="text">Danh sách Phòng Ban</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <h2>Danh sách Phòng Ban</h2>
+
+    <table border="1">
+        <tr>
+            <th>Mã Phòng</th>
+            <th>Tên Phòng</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="phongBan : ${phongBans}">
+            <td th:text="${phongBan.maPhong}"></td>
+            <td th:text="${phongBan.tenPhong}"></td>
+            <td>
+                <a th:href="@{/phongbans/edit/{id}(id=${phongBan.maPhong})}">Edit</a>
+                <a th:href="@{/phongbans/delete/{id}(id=${phongBan.maPhong})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>
